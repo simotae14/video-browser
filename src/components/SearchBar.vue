@@ -11,7 +11,6 @@ export default {
         onInput: function(event) {
             // emit event
             this.$emit('termChange', event.target.value);
-            console.log(event.target.value);
         }
     }
 }
