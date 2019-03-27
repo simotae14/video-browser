@@ -5,8 +5,8 @@
 </template>
 
 <script>
+import axios from 'axios';
 import SearchBar from './components/SearchBar';
-const API_KEY = 'AIzaSyBZD6IONSngNDHcmx6O1IUQNhVzkbevnso';
 
 export default {
     name: 'App',
@@ -15,7 +15,15 @@ export default {
     },
     methods: {
         onTermChange(searchTerm) {
-            console.log(searchTerm);
+            axios.get('https://googleapis.com/youtube/v3/search', {
+                params: {
+                    key: process.env.API_KEY,
+                    type: 'video',
+                    part: 'snippet',
+                    q: searchTerm
+                },
+                 crossdomain: true
+            }).then(response => console.log(response))
         }
     }
 }
