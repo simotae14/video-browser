@@ -15,15 +15,16 @@ export default {
     },
     methods: {
         onTermChange(searchTerm) {
-            axios.get('https://googleapis.com/youtube/v3/search', {
+            axios.get('https://www.googleapis.com/youtube/v3/search', {
                 params: {
-                    key: process.env.API_KEY,
+                    key: process.env.VUE_APP_API_KEY,
                     type: 'video',
                     part: 'snippet',
                     q: searchTerm
-                },
-                 crossdomain: true
-            }).then(response => console.log(response))
+                }
+            }).then(response => {
+                console.log(response)
+            })
         }
     }
 }
